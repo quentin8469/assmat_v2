@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Apps
     'account.apps.AccountConfig',
+    'family.apps.FamilyConfig'
 
 ]
 
