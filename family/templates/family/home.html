@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+
 <!-- calendrier -->
 <div>
     <p> Calendrier</p>
@@ -19,7 +20,7 @@
             <div class="col">
                 <div class="card shadow-sm">
                     {% if enfant.photo %}
-                    <img src="{{ enfant.photo.url }}" class="w-50 p-3" alt="Image">
+                    <img src="{{ enfant.photo.url }}" class="w-50 p-2" alt="Image">
                     {% endif %}
                     <div class="card-body">
                         <p class="card-text">Nom: {{ enfant.nom }} </p>
