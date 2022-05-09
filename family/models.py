@@ -35,6 +35,13 @@ class Enfant(models.Model):
     """
     Model for the creation of the Child model
     """
+
+    STATUTS_CHOICES = [
+        ("En_cours", "En_cours"),
+        ("En_attente", "En_attente"),
+        ("Suspendu", "Suspendu"),
+        ("Terminé", "Terminé"),
+    ]
     photo = models.ImageField(upload_to="photo_enfant/", blank=True, null=True)
     nom = models.CharField(max_length=150, blank=True, null=True)
     prenom = models.CharField(max_length=150, blank=True, null=True)
@@ -46,6 +53,7 @@ class Enfant(models.Model):
     allergie = models.TextField(blank=True, null=True)
     parent = models.ForeignKey(to=Employeur, on_delete=models.CASCADE)
     date_creation = models.DateTimeField(auto_now_add=True)
+    statut = models.CharField(max_length=150, choices=STATUTS_CHOICES, blank=True, null=True)
 
     class Meta:
         verbose_name = "Enfant"
