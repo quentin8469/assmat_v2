@@ -11,3 +11,8 @@ def calendar_view(year=datetime.now().year, month=datetime.now().month):
     calendrier = HTMLCalendar().formatmonth(year, month)
 
     return calendrier
+
+
+class CustomCalendar(HTMLCalendar):
+    pass
+
