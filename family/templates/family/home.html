@@ -5,8 +5,20 @@
 
 <!-- calendrier -->
 <div>
-    <p> Calendrier</p>
-    {% include "calendar/calendar.html" %}
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+          {% for event in events %}
+        <h2 class="featurette-heading">{{ event.title }}. <span class="text-muted">{{ event.child.nom }}.</span></h2>
+          <p class="lead">{{ event.description }}</p>
+          <p class="lead">{{ event.start_time }} / {{ event.end_time }}</p>
+        {% endfor %}
+      </div>
+      <div class="col-md-5 order-md-1">
+          <center>
+              {{ calendrier|safe }}
+          </center>
+      </div>
+    </div>
 </div>
 
 <hr>
