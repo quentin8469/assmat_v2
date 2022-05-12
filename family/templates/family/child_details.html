@@ -30,20 +30,23 @@
 </div>
 <hr>
 <div>
-    <div class="row featurette">
-      <div class="col-md-7 order-md-2">
-          {% for event in events %}
+<div class="row featurette">
+    <div class="col-md-7 order-md-2">
+        {% for event in events %}
         <h2 class="featurette-heading">{{ event.title }}. <span class="text-muted">{{ event.child.nom }}.</span></h2>
-          <p class="lead">{{ event.description }}</p>
-          <p class="lead">{{ event.start_time }} / {{ event.end_time }}</p>
+        <p class="lead">{{ event.description }}</p>
+        <p class="lead">{{ event.start_time }} / {{ event.end_time }}</p>
         {% endfor %}
-      </div>
-      <div class="col-md-5 order-md-1">
-          <center class="w-100 p-5">
-              {{ calendrier|safe }}
-          </center>
-      </div>
     </div>
+    <div class="col-md-5 order-md-1">
+        <center class="w-100 p-5">
+            {{ calendrier|safe }}
+            </br>
+            <a href=""> precedent</a>
+            <a href=""> suivant</a>
+        </center>
+    </div>
+</div>
 </div>
 <hr>
 <div class="album py-5 bg-light">
