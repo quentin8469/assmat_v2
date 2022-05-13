@@ -29,130 +29,40 @@
 <!-- contrats en cours -->
 <div class="album py-5 bg-light">
     <p> Contrats en cours</p>
-    <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {% for enfant in enfants %}
-            {% if enfant.statut == "En_cours" %}
-            <div class="col">
-                <div class="card shadow-sm">
-                    {% if enfant.photo %}
-                        <img src="{{ enfant.photo.url }}" class="w-50 p-2 " alt="Image">
-                    {% endif %}
-                    <div class="card-body">
-                        <p class="card-text">Nom: {{ enfant.nom }} </p>
-                        <p class="card-text">Prénom: {{ enfant.prenom }} </p>
-                        <p class="card-text">Anniversaire: {{ enfant.date_anniv }} </p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'family:child_details' pk=enfant.id %}"> Détails </a>
-                            </div>
-                            <small class="text-muted">{{ enfant.date_creation }}</small>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for enfant in enfants %}
+        {% if enfant.statut == "En_cours" %}
+        <div class="col">
+            <div class="card h-100">
+                {% if enfant.photo %}
+                <img src="{{ enfant.photo.url }}" class="card-img-top w-25 p-2" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">Nom: {{ enfant.nom }}</h5>
+                    <p class="card-text">Prénom: {{ enfant.prenom }} </p>
+                    <p class="card-text">Anniversaire: {{ enfant.date_anniv }} </p>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group g-4">
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'family:child_details' pk=enfant.id %}"> Détails </a>
+                            <a type="button" class="btn btn-sm btn-outline-danger" href="{% url 'family:child_details' pk=enfant.id %}"> Urgences </a>
                         </div>
+                        <small class="text-muted">{{ enfant.date_creation }}</small>
                     </div>
                 </div>
             </div>
-            {% endif %}
-            {% endfor %}
         </div>
+        {% endif %}
+        {% endfor %}
     </div>
 </div>
+
+
 
 <!-- carousel -->
-<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active" >
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <img src="media/photo_enfant/bruce_01.jpg" class="d-block w-10" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">Nom: 5161 </p>
-                                <p class="card-text">Prénom: 56161} </p>
-                                <p class="card-text">Anniversaire: 5151 </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a type="button" class="btn btn-sm btn-outline-secondary" href=""> Détails </a>
-                                    </div>
-                                    <small class="text-muted">202010</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item " >
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <img src="media/photo_enfant/furet.jpg" class="d-block w-10" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">Nom: 5161 </p>
-                                <p class="card-text">Prénom: 56161} </p>
-                                <p class="card-text">Anniversaire: 5151 </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a type="button" class="btn btn-sm btn-outline-secondary" href=""> Détails </a>
-                                    </div>
-                                    <small class="text-muted">202010</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <img src="media/photo_enfant/furet2.jpg" class="d-block w-10" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">Nom: 5161 </p>
-                                <p class="card-text">Prénom: 56161} </p>
-                                <p class="card-text">Anniversaire: 5151 </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a type="button" class="btn btn-sm btn-outline-secondary" href=""> Détails </a>
-                                    </div>
-                                    <small class="text-muted">202010</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
 
 
-<section class="best_movies">
-		<h2>All best movies for all categories</h2>
-		<div class="carrousel top-movies">
-			<div class="after nav-btn">prev</div>
-			<div class="item 1 shows"> <img id="img1" src="media/photo_enfant/bruce_01.jpg" alt="Logo"></div>
-			<div class="item 1 shows"><img id="img2" src="media/photo_enfant/furet.jpg" alt="Logo"></div>
-			<div class="item 1 shows"><img id="img3" src="media/photo_enfant/furet2.jpg" alt="Logo"></div>
-			<div class="item 1 shows"><img id="img4" src="media/photo_enfant/gold_nas.png" alt="Logo"></div>
-			<div class="item 1 shows"><img id="img5" src="media/photo_enfant/houblon_nas.jpg" alt="Logo"></div>
-			<div class="item 1 hidden"><img id="img6" src="media/photo_enfant/bruce_01.jpg" alt="Logo"></div>
-			<div class="item 1 hidden"><img id="img7" src="media/photo_enfant/furet.jpg" alt="Logo"></div>
-			<div class="befor nav-btn">next</div>
-		</div>
-</section>
 
 <hr>
 
@@ -160,32 +70,33 @@
 <!-- contrats terminés -->
 <div class="album py-5 bg-light">
     <p> Contrats terminés</p>
-
-    <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {% for enfant in enfants %}
-            {% if enfant.statut == "Terminé" %}
-            <div class="col">
-                <div class="card shadow-sm">
-                    {% if enfant.photo %}
-                    <img src="{{ enfant.photo.url }}" class="w-50 p-3" alt="Image">
-                    {% endif %}
-                    <div class="card-body">
-                        <p class="card-text">Nom: {{ enfant.nom }} </p>
-                        <p class="card-text">Prénom: {{ enfant.prenom }} </p>
-                        <p class="card-text">Anniversaire: {{ enfant.date_anniv }} </p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'family:child_details' pk=enfant.id %}"> Détails </a>
-                            </div>
-                            <small class="text-muted">{{ enfant.date_creation }}</small>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for enfant in enfants %}
+        {% if enfant.statut == "Terminé" %}
+        <div class="col">
+            <div class="card h-100">
+                {% if enfant.photo %}
+                <img src="{{ enfant.photo.url }}" class="card-img-top w-25 p-2" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">Nom: {{ enfant.nom }}</h5>
+                    <p class="card-text">Prénom: {{ enfant.prenom }} </p>
+                    <p class="card-text">Anniversaire: {{ enfant.date_anniv }} </p>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group g-4">
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'family:child_details' pk=enfant.id %}"> Détails </a>
+                            <a type="button" class="btn btn-sm btn-outline-danger" href="{% url 'family:child_details' pk=enfant.id %}"> Urgences </a>
                         </div>
+                        <small class="text-muted">{{ enfant.date_creation }}</small>
                     </div>
                 </div>
             </div>
-            {% endif %}
-            {% endfor %}
         </div>
+        {% endif %}
+        {% endfor %}
     </div>
 </div>
+
 {% endblock %}
