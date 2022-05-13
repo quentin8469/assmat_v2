@@ -24,31 +24,41 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
+
 <hr>
-<div>
+
+
 <div class="row featurette">
     <div class="col-md-7 order-md-2">
         {% for event in events %}
-        <h2 class="featurette-heading">{{ event.title }}. <span class="text-muted">{{ event.child.nom }}.</span></h2>
-        <p class="lead">{{ event.description }}</p>
-        <p class="lead">{{ event.start_time }} / {{ event.end_time }}</p>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="flush-collapseOne">
+                    <h5 class="featurette-heading">{{ event.title }}. <span class="text-muted">{{ event.child.nom }}.</span></h5>
+                </button>
+            </h2>
+            <div id="flush-collapse{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">{{ event.description }} </div>
+                <p class="lead">{{ event.start_time }} / {{ event.end_time }}</p>
+            </div>
+        </div>
         {% endfor %}
     </div>
     <div class="col-md-5 order-md-1">
-        <center class="w-100 p-5">
+        <center class="h-100">
             {{ calendrier|safe }}
             </br>
-            <a href=""> precedent</a>
-            <a href=""> suivant</a>
+            <a class="btn btn-info left" href=""> Previous Month </a>
+	        <a class="btn btn-info right" href=""> Next Month </a>
         </center>
     </div>
 </div>
-</div>
+
 <hr>
+
 <div class="album py-5 bg-light">
     <p> Contacts urgences</p>
     <div class="container">
